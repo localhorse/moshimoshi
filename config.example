@@ -1,0 +1,19 @@
+Accounts:
+    200@192.168.1.109:
+        enabled = true
+        auth:
+            password = password11
+
+        sip:
+            outbound_proxy = "192.168.1.109:5060;transport=udp"
+
+
+
+SIPSimpleSettings:
+    default_account = 200@192.168.1.109
+    audio:
+        alert_device = system_default
+        input_device =
+        output_device =
+
+
