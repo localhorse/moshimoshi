@@ -22,12 +22,13 @@ from sipsimple.audio import WavePlayer
 
 from sipsimple.account import AccountManager
 from sipsimple.application import SIPApplication
-from sipsimple.configuration.backend.file import FileBackend
+from sipsimple.storage import FileStorage
 from sipsimple.configuration.settings import SIPSimpleSettings
 from sipsimple.lookup import DNSLookup, DNSLookupError
 from sipsimple.session import Session
 from sipsimple.streams import AudioStream
-from sipsimple.util import Route, run_in_green_thread
+from sipsimple.util import Route
+from sipsimple.threading.green import run_in_green_thread
 
 #
 
@@ -55,7 +56,7 @@ class BotApplication(SIPApplication):
 	
 	def call(self, callee):
 		self.callee = callee
-		self.start(FileBackend('config'))
+                self.start(FileStorage('.'))
 			
 	@run_in_green_thread
 	def _NH_SIPApplicationDidStart(self, notification):
